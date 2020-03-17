@@ -1,0 +1,42 @@
+{% extends "bootstrap/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--引入title_test，並命令之為"title"模組-->
+    {% block title %}
+        {% if title_test %}
+            <title>{{ title_test }} | Flask App</title>
+        {% else %}
+            <title>The title disppear</title>
+        {% endif %}
+    {% endblock %}
+</head>
+<body>
+    <!--引入導覽列，並命令之為"navbar"模組-->
+    {% block navbar %}
+      {% include 'navbar.html' %}
+    {% endblock navbar%}
+
+    {% block content %}
+        <div class="container">
+            {% block app_content %}
+
+            {% endblock %}
+            {%- block test_content %}
+            <h2>如果引入繼承的模板有特別設定或改寫內容，將不會顯示此段文字與以下內容</h2>
+                <h1>Hello Kitty</h1>
+                <p>{{ title_test }}</p>
+                {% for t in data %}
+                    <P>{{ t }}</P>
+                {% endfor %}
+            {%- endblock test_content %}
+        </div>
+    {% endblock %}
+</body>
+</html>
+
+
+
+
+
